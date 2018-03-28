@@ -16,9 +16,9 @@ Mirrors_Copy = "/mir"
 
 #遞迴複製(含空資料夾)
 #說明：此指令也會複製子資料夾
-recursive_Mode = "/e"
+Recursive_Mode = "/e"
 
 #多線城複製設定(此指令適用於Win7以上)
-multi_threaded_set = "/mt:100"
+Multi_threaded_set = "/mt:100"
 
 os.system(printf)
