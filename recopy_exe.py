@@ -5,9 +5,9 @@ printf = "Notepad.exe"
 #定義指令與主要路徑
 Robocopy = "robocopy"
 #來源路徑，使用者請修改它
-Source = "D:\Source folder path"
+Source = "<Source folder path：Please paste the source path to this line !>"
 #目的地路徑
-Destination = "D:\Destination folder path"
+Destination = "<Destination folder path：Please paste the destination path to this line ! >"
 
 #定義參數
 #鏡像複製
