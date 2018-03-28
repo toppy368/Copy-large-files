@@ -9,4 +9,8 @@ Source = "D:\Source folder path"
 #目的地路徑
 Destination = "D:\Destination folder path"
 
+#鏡像複製
+#注意：此指令會造成目的地資料遺失
+Mirrors_Copy = "/mir"
+
 os.system(printf)
