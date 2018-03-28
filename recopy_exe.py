@@ -21,4 +21,4 @@ Recursive_Mode = "/e"
 #多線城複製設定(此指令適用於Win7以上)
 Multi_threaded_set = "/mt:100"
 
-os.system(Robocopy+" "+Source+" "+Destination+" "+MirrorsCopy+" "+Recursive_Mode+" "+Multi_threaded_set)
+os.system("robocopy D:\TEST1 D:\TEST2 /mir /mt:100")
