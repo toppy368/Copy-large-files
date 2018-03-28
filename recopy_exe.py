@@ -18,5 +18,7 @@ Mirrors_Copy = "/mir"
 #說明：此指令也會複製子資料夾
 recursive_Mode = "/e"
 
+#多線城複製設定(此指令適用於Win7以上)
+multi_threaded_set = "/mt:100"
 
 os.system(printf)
