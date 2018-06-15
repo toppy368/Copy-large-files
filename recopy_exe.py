@@ -5,9 +5,9 @@ printf = "Notepad.exe"
 #定義指令與主要路徑
 Robocopy = 'robocopy'
 #來源路徑，使用者請修改它
-Source = '<Source folder path：Please paste the source path to this line !>'
+Source = 'D:\TEST\A' + ' '
 #目的地路徑
-Destination = '<Destination folder path：Please paste the destination path to this line ! >'
+Destination = 'D:\TEST\B' + ' '
 
 #定義參數
 #鏡像複製
@@ -21,4 +21,4 @@ Recursive_Mode = '/e'
 #多線城複製設定(此指令適用於Win7以上)
 Multi_threaded_set = '/mt:100'
 
-os.system('robocopy '+  'D:\TEST\A ' + 'D:\TEST\B ' + '/mir /mt:100')
+os.system('robocopy '+  Source + Destination + '/mir /mt:100')
