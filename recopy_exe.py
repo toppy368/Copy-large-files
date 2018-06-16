@@ -9,6 +9,9 @@ Source = 'D:\TEST\A' + ' '
 #目的地路徑
 Destination = 'D:\TEST\B' + ' '
 
+#路徑變數(方便維護所以先將路徑組合成一個變數)
+Path = Source + Destination
+
 #定義參數
 #鏡像複製
 #注意：此指令會先清除目的地資料夾的資料
