@@ -15,13 +15,11 @@ Path = Source + Destination
 #定義參數
 #鏡像複製
 #注意：此指令會先清除目的地資料夾的資料
-#Mirrors_Copy = '/mir'
+Mirrors_Copy = 'robocopy '+ Path +'/mir /mt:100'
 
 #遞迴複製(含空資料夾)
 #說明：此指令也會複製子資料夾
-#Recursive_Mode = '/e'
+Recursive_Mode = 'robocopy ' + Path + '/e /mt:100'
 
-#多線城複製設定(此指令適用於Win7以上)
-#Multi_threaded_set = '/mt:100'
 
 os.system('robocopy '+  Path + '/mir /mt:100')
