@@ -1,4 +1,9 @@
 # Copy Large File for Windows / macOS / Linux
+## 說明 Description
+這是大量複製檔案的程式，使用python做成的小程式，
+簡單來說這個python檔案可以直接對Windowws執行DOS指令robocopy，
+做資料夾之間的複製，可以做資料夾的大量檔案複製，可以取代傳統的複製貼上功能(Ctrl + C、Ctrl+V)。
+
 ## 特點 Features
 - 自動判斷是否需要進行 Recursive (是否為資料夾)。
 - 自動偵測是否為 Windows 或 macOS / Linux 環境，<br />
