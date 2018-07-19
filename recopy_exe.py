@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #-*- coding: utf-8 -*-
-import os, sys, json
+import os, sys, json, time, datetime, time
 
 '''
 從 Source 複製資料至目標位置
@@ -85,15 +85,29 @@ rm_win32 = 'robocopy ' + Path + '/e /mt:100'
 rm_linux = 'rsync -hr --progress ' + Path
 
 if __name__ == "__main__":
-    if sys.platform == "win32":
-        if recursive:
-            os.system(rm_win32)
-        else:
-            os.system(cp_win32)
+    ntime = datetime.datetime.now()
+    deltatime = datetime.timedelta(seconds = 3)
+    ntime += deltatime
+    print("""
+開始時間：{h} 時 {m} 分 {s} 秒
+來源位置：{source}
+目標位置：{target}
+
+若沒有問題，請直接輸入 Enter
+若有問題，請輸入 A 後重新開啟程式。""".format(h = ntime.hour, m = ntime.minute, s = ntime.second, \
+source = sourcePath, target = targetPath))
+    if input("請輸入：") == "A":
+        exit()
     else:
-        if recursive:
-            os.system(rm_linux)
+        if sys.platform == "win32":
+            if recursive:
+                os.system(rm_win32)
+            else:
+                os.system(cp_win32)
         else:
-            os.system(cp_linux)
+            if recursive:
+                os.system(rm_linux)
+            else:
+                os.system(cp_linux)
 else:
     print("Can't run as module!")
