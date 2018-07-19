@@ -18,6 +18,24 @@ Example:
     recopy.py "./abc.py" "./123/abc.py"
 '''
 
+# TUI 函式
+def tui():
+    global sourcePath, targetPath
+    sourcePath = input("輸入來源位置：")
+    targetPath = input("輸入目標位置：")
+    print("""請再次確認是否輸入正確。
+
+來源位置：{sP}
+目標位置：{tP}
+
+如果輸入錯誤，輸入 A 關閉程式之後重新開啟輸入。
+如果輸入正確，直接按下 Enter 即可。
+""".format(sP = sourcePath, tP = targetPath)
+    )
+    if input("請輸入：") == "A":
+        exit()
+    else:
+        return
 # 讀取 config.json 的內容
 if os.path.exists("config.json"):
     jsonExist = True
@@ -26,6 +44,7 @@ if os.path.exists("config.json"):
     jsonContent = json.loads(jsonRaw)
     jsonContent.pop('//')
 else:
+    jsonExist = False
     print("[WARN] config.json not found!")
 
 # 接收指令列參數
@@ -34,10 +53,13 @@ if len(sys.argv) > 2:
     targetPath = sys.argv[2]
 else:
     if jsonExist:
-        sourcePath = jsonContent.get('sourcePath', ":errcode:1")
-        targetPath = jsonContent.get('targetPath', ":errcode:2")
+        if jsonContent.get("sourcePath", "") == "" or jsonContent.get("targetPath", "") == "":
+            tui()
+        else:
+            sourcePath = jsonContent.get("sourcePath")
+            targetPath = jsonContent.get("targetPath")
     else:
-        print("[ERR] 參數輸入錯誤！")
+        tui()
 
 if os.path.isfile(sourcePath):
     recursive = False
