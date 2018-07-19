@@ -1,4 +1,4 @@
-inport json
+import json
 
 config = 
 	{
