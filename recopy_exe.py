@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 #-*- coding: utf-8 -*-
-import os, sys
+import os, sys, json
 
 '''
 從 Source 複製資料至目標位置
@@ -18,13 +18,26 @@ Example:
     recopy.py "./abc.py" "./123/abc.py"
 '''
 
+# 讀取 config.json 的內容
+if os.path.exists("config.json"):
+    jsonExist = True
+    jsonInit = os.open("config.json", os.O_RDONLY)
+    jsonRaw = str(os.read(jsonInit, 4096), encoding="UTF-8")
+    jsonContent = json.loads(jsonRaw)
+    jsonContent.pop('//')
+else:
+    print("[WARN] config.json not found!")
+
 # 接收指令列參數
 if len(sys.argv) > 2:
     sourcePath = sys.argv[1]
     targetPath = sys.argv[2]
 else:
-    print("輸入錯誤！")
-    exit(1)
+    if jsonExist:
+        sourcePath = jsonContent.get('sourcePath', ":errcode:1")
+        targetPath = jsonContent.get('targetPath', ":errcode:2")
+    else:
+        print("[ERR] 參數輸入錯誤！")
 
 if os.path.isfile(sourcePath):
     recursive = False
