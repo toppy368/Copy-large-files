@@ -1,7 +1,7 @@
 {
 	"//": "自動填入 recopy_exe.py，適合給固定不變的複製。",
 	"//": "sourcePath：設定來源位置，引號內請填入想複製的來源，請勿移除雙引號。",
-	"sourcePath": "D:\Github\Copy-large-files",
+	"sourcePath": "",
 	"//": "targetPath：設定目標位置，引號內請填入複製目標的路徑，請勿移除雙引號",
 	"targetPath": ""
 }
