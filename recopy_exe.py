@@ -29,12 +29,12 @@ def tui():
     targetPath = input("輸入目標位置：")
     print("""請再次確認是否輸入正確。
 
-來源位置：{sP}
-目標位置：{tP}
+		來源位置：{sP}
+		目標位置：{tP}
 
-如果輸入錯誤，輸入 A 關閉程式之後重新開啟輸入。
-如果輸入正確，直接按下 Enter 即可。
-""".format(sP=sourcePath, tP=targetPath))
+		如果輸入錯誤，輸入 A 關閉程式之後重新開啟輸入。
+		如果輸入正確，直接按下 Enter 即可。
+		""".format(sP=sourcePath, tP=targetPath))
     if input("請輸入：") == "A":
         exit()
     else:
