@@ -37,14 +37,14 @@ Path = sourcePath + " " + targetPath + " "
 #定義參數
 #鏡像複製 (win32)
 #注意：此指令會先清除目的地資料夾的資料
-cp_win32 = 'robocopy '+ Path +'/mir /eta /mt:100'
+cp_win32 = 'robocopy '+ Path +'/mir /mt:100'
 
 # 複製 (linux / mac)
 cp_linux = 'rsync -h --progress ' + Path
 
 #遞迴複製(含空資料夾) (win32)
 #說明：此指令也會複製子資料夾
-rm_win32 = 'robocopy ' + Path + '/e /eta /mt:100'
+rm_win32 = 'robocopy ' + Path + '/e /mt:100'
 
 # 遞迴複製 (linux / mac)
 rm_linux = 'rsync -hr --progress ' + Path
