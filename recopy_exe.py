@@ -103,21 +103,21 @@ if __name__ == "__main__":
 		若有問題，請輸入 A 後重新開啟程式。""".format(h = ntime.hour, m = ntime.minute, s = ntime.second, \
 		source = sourcePath, target = targetPath))
     
-	#if input("請輸入：") == "A":
-        #exit()
-    #else:
-        #if sys.platform == "win32":
-            #if recursive:
-                #os.system(rm_win32)
-            #else:
-                #os.system(cp_win32)
-        #else:
-            #if recursive:
-                #os.system(rm_linux)
-            #else:
-                #os.system(cp_linux)
-#else:
-    #print("Can't run as module!")
+	if input("請輸入：") == "A":
+        exit()
+    else:
+        if sys.platform == "win32":
+            if recursive:
+                os.system(rm_win32)
+            else:
+                os.system(cp_win32)
+        else:
+            if recursive:
+                os.system(rm_linux)
+            else:
+                os.system(cp_linux)
+else:
+    print("Can't run as module!")
 	
 	#錯誤處理 try except
 	try:
