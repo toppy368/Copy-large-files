@@ -21,19 +21,9 @@ Usage: `recopy_exe.py [原始檔案 / 資料夾位置] [目標檔案 / 資料夾
 ### JSON
 如果不指定參數，recopy_exe.py 會自動從 config.json 取得來源與目標路徑。
 
-這是 config.json 的原始檔案，供隨時復原到原始狀態：
-
-```
-{
-	"//": "自動填入 recopy_exe.py，適合給固定不變的複製。",
-	"//": "sourcePath：設定來源位置，引號內請填入想複製的來源，請勿移除雙引號。",
-	"sourcePath": "",
-	"//": "targetPath：設定目標位置，引號內請填入複製目標的路徑，請勿移除雙引號",
-	"targetPath": ""
-}
-```
-
 在 sourcePath 填入來源路徑、targetPath 填入目標路徑，效果等同於從參數中輸入路徑。
+
+若要重設 json，只須把 config.json 刪除，程式將會自動建立。
 
 ### 文字介面
 當參數未輸入、JSON 未設定或是不存在，則使用 TUI 介面。
@@ -49,7 +39,7 @@ Usage: `recopy_exe.py [原始檔案 / 資料夾位置] [目標檔案 / 資料夾
    python3 recopy_exe.py (參數)
    ```
 
-# 文件 Documents
+## 文件 Documents
 - [MSDN robocopy](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy)
 - [Robocopy Wikipedia](https://en.wikipedia.org/wiki/Robocopy)
 - [Rsync Man Manual](https://linux.die.net/man/1/rsync)
