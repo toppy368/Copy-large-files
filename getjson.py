@@ -17,7 +17,7 @@ def jsonReader(config):
         jsonContent.pop('//')
         if jsonContent.get("sourcePath") == "" or jsonContent.get("targetPath") == "":
             return 250
-        return jsonContent
+        return (jsonContent.get("sourcePath"), jsonContent.get("targetPath"))
     else:
         initJson = os.open(config, os.O_WRONLY|os.O_CREAT)
         os.write(initJson, bytes(i18n.jsonContent, encoding="UTF-8"))
