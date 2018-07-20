@@ -119,13 +119,13 @@ if __name__ == "__main__":
 else:
     print("Can't run as module!")
 	
-	#錯誤處理 try except
-	try:
+#錯誤處理 try except
+#try:
 	
-	except Exception as err:
-		#顯示錯誤訊息並另存errorlog.txt
-		print("Can't run as module!")
-		#將錯誤訊息另存errorlog.txt
-		errfile = open("errorlog.txt","w")
-		errfile.write(err)
-	else:
+#except Exception as err:
+	#顯示錯誤訊息並另存errorlog.txt
+	#print("Can't run as module!")
+	#將錯誤訊息另存errorlog.txt
+	#errfile = open("errorlog.txt","w")
+	#errfile.write(err)
+#else:
