@@ -1,109 +1,65 @@
 #!/usr/bin/python3
 #-*- coding: utf-8 -*-
+# 匯入內部模組
 import datetime
 import json
 import os
 import sys
 import time
-'''
-從 Source 複製資料至目標位置
-可接受指令列的參數。
+import shutil
 
-Usage: recopy.py Source Target
+# 匯入程式所需模組
+from textmod import tui
+from getjson import jsonReader
+import theStrings as i18n
 
-Source
-    來源位址。使用 "" 包住。
-Target
-    目標位址。使用 "" 包住。
+# 定義前置變數
+config = "config.json"
 
-Example:
-    recopy.py "./abc" "./123"
-    recopy.py "./abc.py" "./123/abc.py"
-'''
-
-
-# TUI 函式
-def tui():
-    global sourcePath, targetPath
-    sourcePath = input("輸入來源位置：")
-    targetPath = input("輸入目標位置：")
-    print("""請再次確認是否輸入正確。
-
-		來源位置：{sP}
-		目標位置：{tP}
-
-		如果輸入錯誤，輸入 A 關閉程式之後重新開啟輸入。
-		如果輸入正確，直接按下 Enter 即可。
-		""".format(sP=sourcePath, tP=targetPath))
-    if input("請輸入：") == "A":
-        exit()
-    else:
-        return
-
-
-# 讀取 config.json 的內容
-if os.path.exists("config.json"):
-    jsonExist = True
-    jsonInit = os.open("config.json", os.O_RDONLY)
-    jsonRaw = str(os.read(jsonInit, 4096), encoding="UTF-8")
-    jsonContent = json.loads(jsonRaw)
-    jsonContent.pop('//')
-else:
-    jsonExist = False
-    print("[WARN] config.json not found!")
+###############
+## 主程式部份 ##
+##############
+# 載入 json
+jsonContent = jsonReader(config)
 
 # 接收指令列參數
 if len(sys.argv) > 2:
     sourcePath = sys.argv[1]
     targetPath = sys.argv[2]
 else:
-    if jsonExist:
-        if jsonContent.get("sourcePath", "") == "" or jsonContent.get(
-                "targetPath", "") == "":
-            tui()
-        else:
-            sourcePath = jsonContent.get("sourcePath")
-            targetPath = jsonContent.get("targetPath")
+    if jsonContent == 255 or jsonContent == 250:
+        tuilist = tui()
+        sourcePath = tuilist[0]
+        targetPath = tuilist[1]
     else:
-        tui()
+        sourcePath = jsonContent[0]
+        targetPath = jsonContent[1]
 
 if os.path.isfile(sourcePath):
     recursive = False
 else:
     recursive = True
 
-#路徑變數(方便維護所以先將路徑組合成一個變數)
+# 路徑變數 (方便維護所以先將路徑組合成一個變數)
 Path = sourcePath + " " + targetPath + " "
 
-#定義參數
-#鏡像複製 (win32)
-#注意：此指令會先清除目的地資料夾的資料
+# 定義後置變數
+## Windows 的檔案複製變數
 cp_win32 = 'robocopy ' + Path + '/mir /eta /mt:100'
-
-# 複製 (linux / mac)
+## Linux 的檔案複製變數 
 cp_linux = 'rsync -h --progress ' + Path
-
-#遞迴複製(含空資料夾) (win32)
-#說明：此指令也會複製子資料夾
+## Windows 的資料夾複製變數
 rm_win32 = 'robocopy ' + Path + '/e /eta /mt:100'
-
-# 遞迴複製 (linux / mac)
+## Linux 的資料夾複製變數
 rm_linux = 'rsync -hr --progress ' + Path
 
 if __name__ == "__main__":
     ntime = datetime.datetime.now()
-    deltatime = datetime.timedelta(seconds=3)
-    ntime += deltatime
-    print("""
-		開始時間：{h} 時 {m} 分 {s} 秒
-		來源位置：{source}
-		目標位置：{target}
-
-		若沒有問題，請直接輸入 Enter
-		若有問題，請輸入 A 後重新開啟程式。""".format(h = ntime.hour, m = ntime.minute, s = ntime.second, \
-		source = sourcePath, target = targetPath))
-    
-	if input("請輸入：") == "A":
+    dtime = datetime.timedelta(seconds=1)
+    ntime += dtime
+    print(i18n.main_recheck.format(h = ntime.hour, m = ntime.minute, s = ntime.second, \
+source = sourcePath, target = targetPath))
+    if input(i18n.gen_input) == "A":
         exit()
     else:
         if sys.platform == "win32":
@@ -117,8 +73,14 @@ if __name__ == "__main__":
             else:
                 os.system(cp_linux)
 else:
-    print("Can't run as module!")
-	
+    print(i18n.generr_module)
+
+# 清理垃圾程式檔案
+shutil.rmtree("__pycache__")
+exit(0)
+
+'''
+@ Still developing, DO NOT REMOVE IT!
 #錯誤處理 try except
 #try:
 	
@@ -129,3 +91,4 @@ else:
 	#errfile = open("errorlog.txt","w")
 	#errfile.write(err)
 #else:
+'''
