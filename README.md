@@ -11,7 +11,8 @@
 
 ## 準備 Prepare
 1. 安裝 Python。Linux 通常各發行版本已經內建，macOS / Windows 需要至 [Python 官方網站](https://www.python.org) 下載最新版本的 Python。
-2. 安裝完成之後，下載 recopy_exe.py 即可。
+2. python 安裝完成後，下載本專案，可透過Git工具Clone下來，如果使用瀏覽器訪問本頁，可以點選 `Clone or download` 下載本專案的 zip 檔。
+3. 下載好之後，執行此資料夾的 recopy_exe.py 即可。
 
 ## 使用 Using
 ### 參數
