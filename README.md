@@ -1,11 +1,12 @@
 # Copy Large File for Windows / macOS / Linux
 ## 說明 Description
-這是大量複製檔案的程式，使用python做成的小程式，
-簡單來說這個python檔案可以直接對Windowws執行DOS指令robocopy，
-做資料夾之間的複製，可以做資料夾的大量檔案複製，可以取代傳統的複製貼上功能(Ctrl + C、Ctrl+V)。
+這是個可以大量複製檔案的程式，利用 Python 製作出的小程式。
+簡單來說，這個 Python 檔案可以節省您輸入 `robocopy` 或 `rsync`
+指令的困擾，在 Windows 環境下可以複製資料夾，在 Linux 環境可以複製
+檔案以及資料夾，讓大檔案與目錄的備份更加簡單。
 
 ## 特點 Features
-- 自動判斷是否需要進行 Recursive (是否為資料夾)。
+- 自動判斷是否需要進行 Recursive (是否為目錄)。
 - 自動偵測是否為 Windows 或 macOS / Linux 環境，<br />
   Windows 使用 robocopy、macOS / Linux 使用 rsync。
 
@@ -15,6 +16,9 @@
 3. 下載好之後，將zip解壓縮，執行此資料夾的 recopy_exe.py 即可。
 
 ## 使用 Using
+提供了三種方法，讓這個程式更活用。
+**Windows 不支援複製檔案，僅可複製資料夾！**
+
 ### 參數
 Usage: `recopy_exe.py [原始檔案 / 資料夾位置] [目標檔案 / 資料夾位置]`<br />
 如果是包含特殊符號或包含空格，請用 `""` 雙引號包住。
@@ -31,7 +35,7 @@ Usage: `recopy_exe.py [原始檔案 / 資料夾位置] [目標檔案 / 資料夾
 照著畫面上的指示操作即可。
 
 ### 開啟並使用
-1. 如果是 Windows，請開啟命令提示字元之後輸入：(開啟方法：搜尋與執行cmd.exe)
+1. 如果是 Windows，請開啟命令提示字元之後輸入：(開啟方法：搜尋與執行 (Win-R) cmd.exe)
    ```
    python recopy_exe.py (參數)
    ```
