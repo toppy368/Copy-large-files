@@ -18,6 +18,7 @@ jsonContent = """{
 	"//": "targetPath：設定目標位置，引號內請填入複製目標的路徑，請勿移除雙引號",
 	"targetPath": ""
 }"""
+err_bugreport = "您可能踩到了問題或漏洞，請開個 Issue 並回報這個問題。回報時也請附帶這些資訊：\n{0}"
 
 # 主函式字串
 main_recheck = """開始時間：{h} 時 {m} 分 {s} 秒
@@ -26,6 +27,8 @@ main_recheck = """開始時間：{h} 時 {m} 分 {s} 秒
 
 若沒有問題，請直接輸入 Enter
 若有問題，請輸入 A 後重新開啟程式。"""
+err_rsyncNotFound = "找不到 rsync 可執行檔！請尋找您發行版安裝 rsync 的方式。"
+err_windowsdir = "非常抱歉，因為系統與程式上的一些問題，目前不支援 Windows 的單獨檔案複製功能，請改複製整個目錄。"
 
 # 通用字串 general strings
 gen_input = "請輸入："

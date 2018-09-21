@@ -1,6 +1,3 @@
 # .gitignore for the project.
-!LICENSE
-!config.json
-!.gitignore
-!README.md
-!recopy_exe.py
+.vscode/
+__pycache__/
